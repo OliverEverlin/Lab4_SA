@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "2eb7a070-e851-48e6-8d53-5a7b5e4fead7",
-		"name": "L3_L4 Microservicios",
+		"_postman_id": "746f30a2-7f76-4872-a72b-725b0ad0f737",
+		"name": "L4 Microservicios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14840399"
 	},
@@ -87,7 +87,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "74ea217c-807c-4069-9b45-c53b1aed3f9a"
+									"value": "dc557e9c-a843-4656-a8ae-4393469e6574"
 								}
 							]
 						}
@@ -107,7 +107,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"e.rodriguezd@pucp.edu.pe\",\r\n    \"givenName\": \"EddyD\",\r\n    \"surname\": \"Rodriguez\"\r\n}",
+							"raw": "{\r\n    \"email\": \"e.rodriguezd@pucp.edu.pe\",\r\n    \"givenName\": \"Eddy\",\r\n    \"surname\": \"Rodriguez\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -126,7 +126,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "74ea217c-807c-4069-9b45-c53b1aed3f9a"
+									"value": "dc557e9c-a843-4656-a8ae-4393469e6574"
 								}
 							]
 						}
@@ -156,7 +156,7 @@
 							"variable": [
 								{
 									"key": "user_id",
-									"value": "74ea217c-807c-4069-9b45-c53b1aed3f9a"
+									"value": "621db5d0-336e-468f-9fcd-4e5f882b3313"
 								}
 							]
 						}
@@ -181,7 +181,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"recipient\": \"e.rodriguezd@pucp.edu.pe\",\r\n    \"subject\": \"Correo de Prueba\",\r\n    \"body\": \"Este es un correo de prueba\"\r\n}",
+							"raw": "{\r\n    \"recipient\": \"e.rodriguezd@pucp.edu.pe\",\r\n    \"subject\": \"Prueba\",\r\n    \"body\": \"Este es un correo de prueba\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -273,11 +273,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{API_LOCAL_URL_8080}}/accounts/:account_id",
+							"raw": "https://0onvuxr80a.execute-api.eu-central-1.amazonaws.com/dev/accounts/:account_id",
+							"protocol": "https",
 							"host": [
-								"{{API_LOCAL_URL_8080}}"
+								"0onvuxr80a",
+								"execute-api",
+								"eu-central-1",
+								"amazonaws",
+								"com"
 							],
 							"path": [
+								"dev",
 								"accounts",
 								":account_id"
 							],
@@ -312,11 +318,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_LOCAL_URL_8080}}/accounts/:account_id",
+							"raw": "https://0onvuxr80a.execute-api.eu-central-1.amazonaws.com/dev/accounts/:account_id",
+							"protocol": "https",
 							"host": [
-								"{{API_LOCAL_URL_8080}}"
+								"0onvuxr80a",
+								"execute-api",
+								"eu-central-1",
+								"amazonaws",
+								"com"
 							],
 							"path": [
+								"dev",
 								"accounts",
 								":account_id"
 							],
@@ -361,10 +373,262 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "[C] Crear transacción de retiro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"amount\": 20.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL_URL_9090}}/transactions/withdraw",
+							"host": [
+								"{{API_LOCAL_URL_9090}}"
+							],
+							"path": [
+								"transactions",
+								"withdraw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[C] Crear transacción de depósito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"amount\": 20.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL_URL_9090}}/transactions/deposit",
+							"host": [
+								"{{API_LOCAL_URL_9090}}"
+							],
+							"path": [
+								"transactions",
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[R] Obtener todas las transacciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_LOCAL_URL_9090}}/transactions",
+							"host": [
+								"{{API_LOCAL_URL_9090}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Zuul",
+			"item": [
+				{
+					"name": "[C] Crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"dc557e9c-a843-4656-a8ae-4393469e6574\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL_URL_8090}}/accounts",
+							"host": [
+								"{{API_LOCAL_URL_8090}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[R] Obtener todas las cuentas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_LOCAL_URL_8090}}/accounts",
+							"host": [
+								"{{API_LOCAL_URL_8090}}"
+							],
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[C] Crear transacción de depósito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountId\": 1,\r\n    \"amount\": 20.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL_URL_8090}}/transactions/deposit",
+							"host": [
+								"{{API_LOCAL_URL_8090}}"
+							],
+							"path": [
+								"transactions",
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[R] Obtener todas las transacciones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_LOCAL_URL_8090}}/transactions",
+							"host": [
+								"{{API_LOCAL_URL_8090}}"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
-		"type": "inherit"
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "{{SCOPE}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{AUTH_APP_APP_CLIENT_ID}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{AUTH_URL}}/oauth2/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "{{AUTH_URL}}/login",
+				"type": "string"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "{{AUTH_CALLBACK_URL}}",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "L7 API Token",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
 	},
 	"event": [
 		{
